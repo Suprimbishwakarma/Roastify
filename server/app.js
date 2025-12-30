@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./routes/auth.route.js";
+import fetchRouter from "./routes/fetch.route.js";
 import helmet from "helmet";
 import session from "express-session";
 import cors from "cors";
@@ -36,6 +37,10 @@ app.use(
   })
 );
 
+// route to OAuth 2.0 implementation of spotify
 app.use("/auth", authRouter);
+
+// route to fetch user data from spotify User
+app.use("/data", fetchRouter);
 
 export default app;
