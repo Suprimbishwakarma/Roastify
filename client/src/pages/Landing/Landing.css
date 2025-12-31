@@ -1,0 +1,75 @@
+.hero-section {
+  background-color: #233d4d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.fire-emoji {
+  font-size: 5rem;
+  animation: fireFlicker 2s ease-in infinite;
+}
+
+@keyframes fireFlicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+.main-title {
+  font-family: "BBH Bartle", cursive;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #f74d29;
+  margin: 1rem 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-family: "Ubuntu", sans-serif;
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.spotify-login-btn {
+  font-family: "Ubuntu", sans-serif;
+  background: #f74d29;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spotify-login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(244, 105, 25, 0.59);
+}
+
+.privacy-note {
+  font-style: italic;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  .tagline {
+    font-size: 1.2rem;
+  }
+}
