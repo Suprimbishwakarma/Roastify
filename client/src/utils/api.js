@@ -50,3 +50,5 @@ export const roastAPI = () => {
     },
   };
 };
+
+export default API;
