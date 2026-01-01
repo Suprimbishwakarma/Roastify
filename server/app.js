@@ -5,6 +5,7 @@ import roastRouter from "./routes/roast.route.js";
 import helmet from "helmet";
 import session from "express-session";
 import cors from "cors";
+import rateLimit from "express-rate-limit";
 
 // express app initialization
 const app = express();
@@ -24,6 +25,13 @@ app.use(
   })
 );
 
+// ratelimit
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again later.",
+});
+
 // session management
 app.use(
   session({
@@ -37,6 +45,9 @@ app.use(
     },
   })
 );
+
+// rate-limiting
+app.use(limiter);
 
 // route to OAuth 2.0 implementation of spotify
 app.use("/auth", authRouter);
