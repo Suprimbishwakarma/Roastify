@@ -30,7 +30,7 @@ const getUserdata = async (req, res) => {
       spotifyAPI.getMyTopArtists({ time_range: "medium_term", limit: 50 }),
       spotifyAPI.getMyRecentlyPlayedTracks({ limit: 50 }),
       spotifyAPI.getUserPlaylists({ limit: 50 }),
-      spotifyAPI.getMyCurrentPlayingTrack({ limit: 50 }),
+      spotifyAPI.getMyCurrentPlayingTrack(),
     ]);
 
     const response = {
@@ -54,15 +54,7 @@ const getUserdata = async (req, res) => {
 const getUserPlaylists = async (req, res) => {
   try {
     // Set access token from the session before making requests
-    if (req.user && req.user.accessToken) {
-      spotifyAPI.setAccessToken(req.user.accessToken);
-    } else {
-      // If there is no access token, return an error
-      return res
-        .status(401)
-        .json({ error: "No active Spotify session. Please login again." });
-    }
-
+    if (req.user?.accessToken) spotifyAPI.setAccessToken(req.user.accessToken);
     const playlist = await req.spotifyAPI.getUserPlaylists(req.params.id);
     res.json(playlist.body);
   } catch (error) {

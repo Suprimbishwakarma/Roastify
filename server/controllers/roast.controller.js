@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const processUserData = (userData) => {
-  const topArtists = userData.topArtistsShort?.map((a) => a.name || []);
+  const topArtists = userData.topArtistsShort?.map((a) => a.name) || [];
   const topTracks =
     userData.topTracksShort?.map((t) => `${t.name} by ${t.artists[0].name}`) ||
     [];
@@ -30,6 +30,8 @@ const getRoastSystemPrompt = (roastType) => {
     brutal:
       "You are a savage music critic with no filter. Roast this person's music taste mercilessly and creatively. Still keep it sun, not genuinely mean.",
   };
+
+  return prompts[roastType] || prompts.medium;
 };
 
 const createRoastPrompt = (musicProfile, roastType) => {

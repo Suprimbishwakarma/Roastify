@@ -9,12 +9,13 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
+    // remove "Bearer" if present
     const cleanToken = token.startsWith("Bearer")
       ? token.slice(7, token.length)
       : token;
 
     const decoded = jwt.verify(cleanToken, process.env.JWT_SECRET);
-    req.user = decoded;
+    req.user = decoded; // This passes the data to the controller
   } catch (error) {
     return res.status(401).send("Invalid Token");
   }
