@@ -97,7 +97,7 @@
   font-size: 1rem;
 }
 
-.roast-type-selector button:active {
+.roast-type-selector button.active {
   background: #6c7d36;
   border-color: transparent;
   transform: scale(1.05);

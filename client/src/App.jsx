@@ -6,7 +6,7 @@ import RoastDisplay from "./components/RoastDisplay/RoastDisplay";
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />

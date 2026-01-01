@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "",
+  baseURL: "http://localhost:8000",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -45,9 +45,8 @@ export const spotifyAPI = () => {
 
 export const roastAPI = () => {
   return {
-    generateRoast: (userData, roastType) => {
-      API.post("/roast/generate", { userData, roastType });
-    },
+    generateRoast: (userData, roastType) =>
+      API.post("/roast/generate", { userData, roastType }),
   };
 };
 
