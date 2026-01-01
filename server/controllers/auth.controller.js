@@ -56,7 +56,7 @@ const getCallback = async (req, res) => {
     req.session.userId = spotifyUser.display_name; // stores user Id in session.
     req.session.accessToken = accessToken; // stores accessToken in session.
 
-    res.rediret(`${process.env.FRONTEND_URL}/dashboard?token=${jwtToken}`); // redirects to the dashboard
+    res.redirect(`${process.env.FRONTEND_URL}/dashboard?token=${jwtToken}`); // redirects to the dashboard
   } catch (error) {
     console.error("Auth error: ", error);
     res.redirect(`${process.env.FRONTEND_URL}?error=auth_failed`); // redirects an error.

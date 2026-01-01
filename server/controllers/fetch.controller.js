@@ -37,7 +37,7 @@ const getUserdata = async (req, res) => {
       user: userData.value?.body || null,
       topTracksShort: topTracksShort.value?.body.items || [],
       topArtistsShort: topArtistsShort.value?.body.items || [],
-      topTracksMedium: topArtistsMedium.value?.body.items || [],
+      topTracksMedium: topTracksMedium.value?.body.items || [],
       topArtistsMedium: topArtistsMedium.value?.body.items || [],
       recentTracks: recentTracks.value?.body.items || [],
       playlists: playlists.value?.body.items || [],

@@ -30,9 +30,10 @@ const getRoastSystemPrompt = (roastType) => {
     brutal:
       "You are a savage music critic with no filter. Roast this person's music taste mercilessly and creatively. Still keep it sun, not genuinely mean.",
   };
+};
 
-  const createRoastPrompt = (musicProfile, roastType) => {
-    return `
+const createRoastPrompt = (musicProfile, roastType) => {
+  return `
         Roast this person's music taste based on their Spotify data. Make it ${roastType} intensity.
         **The user's music profile:**
         - topArtists: ${musicProfile.topArtists.slice(0, 10).join(",")}
@@ -43,7 +44,6 @@ const getRoastSystemPrompt = (roastType) => {
 
         Generate a hilarious, creative roast (150-200 words). Reference specific artists and genres. Use emojis. Make it shareable!
         `;
-  };
 };
 
 const generateRoast = async (req, res) => {
