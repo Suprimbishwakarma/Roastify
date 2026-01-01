@@ -34,6 +34,30 @@
 
 ---
 
+## 📸 Screenshots
+
+### Landing Page
+
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/743de44c-e928-49d9-b6a1-02bc102a82f9" />
+
+### Spotify Authorization Page
+
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/d92546a5-59fc-476a-8399-e13d03a91e37" />
+
+### Dashboard
+
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/8706f2b3-1788-401e-a65d-cadbabeefb5b" />
+
+### Roast generation
+
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/7996fefe-0e9b-447d-a24f-79de66df9dbc" />
+
+### AI response
+
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/5f66803b-30b2-4ec3-a07b-4a77a591f207" />
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -292,5 +316,3 @@ Distributed under the MIT License.
 - [React Documentation](https://react.dev/)
 - [Express.js](https://expressjs.com/)
 - [Vite](https://vitejs.dev/)
-
----
