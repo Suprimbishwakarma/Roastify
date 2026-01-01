@@ -19,6 +19,8 @@
 
 **Roastify** is a fun web application that connects to your Spotify account, analyzes your top artists, tracks, genres, and playlists, and uses Google's Gemini AI to generate personalized, hilarious roasts about your music taste. Whether you want a gentle tease or a brutal takedown, Roastify delivers entertainment with personality!
 
+<video width="1366" height="768" alt="video" src="https://github.com/user-attachments/assets/463bad1a-69f1-4c84-8015-d11db3c36691"></video>
+
 ### ✨ Key Features
 
 - 🎯 **Spotify OAuth Integration** - Secure login via Spotify
