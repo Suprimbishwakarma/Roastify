@@ -1,0 +1,148 @@
+.dashboard {
+  min-height: 100vh;
+  background: #233d4d;
+  color: white;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+}
+
+.dashboard-header h1 {
+  font-family: "Archivo Black", cursive;
+  color: #f74d29;
+}
+
+.user {
+  display: flex;
+  gap: 24px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #1db954;
+}
+
+.roast-controls {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.logout-btn {
+  width: 100px;
+  font-family: "Ubuntu", sans-serif;
+  background: #f74d29;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(244, 105, 25, 0.59);
+}
+
+.roast-controls .fire {
+  font-size: 5rem;
+  animation: fireFlicker 2s ease-in infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes fireFlicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+.roast-controls h2 {
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.roast-type-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.roast-type-selector button {
+  padding: 0.8rem 2rem;
+  border: 2px solid #f74d29;
+  background: transparent;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.roast-type-selector button:active {
+  background: #6c7d36;
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+.roast-type-selector button:hover {
+  border-color: white;
+}
+
+.generate-roast-btn {
+  background: #f74d29;
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.generate-roast-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(244, 105, 25, 0.59);
+}
+
+.error-message {
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid #ff4444;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .user-info {
+    display: none;
+  }
+  .user-profile {
+    display: none;
+  }
+  .logout-btn {
+    width: 100px;
+    height: 50px;
+  }
+}
