@@ -13,27 +13,43 @@ const loggedIn = async (req, res) => {
     "user-read-recently-played",
   ];
 
-  // Runtime Validation
-  if (!process.env.SPOTIFY_REDIRECT_URI) {
-    return res.status(500).send("❌ Configuration Error: SPOTIFY_REDIRECT_URI is missing from Vercel Environment Variables.");
-  }
-  if (!process.env.SPOTIFY_CLIENT_ID) {
-    return res.status(500).send("❌ Configuration Error: SPOTIFY_CLIENT_ID is missing from Vercel Environment Variables.");
-  }
-
-  // Ensure URI is set (fixes potential initialization timing issues)
+  // Ensure URI is set
   spotifyAPI.setRedirectURI(process.env.SPOTIFY_REDIRECT_URI);
   spotifyAPI.setClientId(process.env.SPOTIFY_CLIENT_ID);
   
-  // DEBUG LOGGING
-  console.log("DEBUG: Configured Redirect URI:", spotifyAPI.getRedirectURI());
-  
-  // creates an authorization page.
   const authURL = spotifyAPI.createAuthorizeURL(scope, null, true);
-  console.log("DEBUG: Generated Auth URL:", authURL);
 
-  // redirects to the authorization page from spotify.
-  res.redirect(authURL);
+  // STOP! DO NOT REDIRECT AUTOMATICALLY.
+  // We will show the user EXACTLY what is being sent so they can find the typo.
+  res.send(`
+    <html>
+      <body style="font-family: sans-serif; padding: 40px; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: #d32f2f;">🛑 Debug Mode: Check Your Settings</h1>
+        <p>We paused the redirect so you can verify your settings.</p>
+
+        <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #ccc;">
+          <h3>1. Variables from Vercel:</h3>
+          <p><strong>Redirect URI:</strong> <code style="background: #fff; padding: 4px; font-size: 1.2em;">${process.env.SPOTIFY_REDIRECT_URI}</code></p>
+          <p><strong>Client ID:</strong> <code>${process.env.SPOTIFY_CLIENT_ID}</code></p>
+        </div>
+
+        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #2196f3;">
+          <h3>2. Action Required:</h3>
+          <p>Go to your <a href="https://developer.spotify.com/dashboard" target="_blank">Spotify Developer Dashboard</a>.</p>
+          <p>Check "Redirect URIs". It <strong>MUST</strong> match the Redirect URI above <strong>EXACTLY</strong>.</p>
+          <ul>
+            <li>Check for <strong>https</strong> vs <strong>http</strong></li>
+            <li>Check for trailing slashes (e.g. <code>/callback/</code> vs <code>/callback</code>)</li>
+            <li>Check for spaces</li>
+          </ul>
+        </div>
+
+        <h3>3. Attempt Login</h3>
+        <p>If the values match exactly, clicking this button should work:</p>
+        <p><a href="${authURL}" style="background: #1DB954; color: white; padding: 15px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1em;">Isolating the Error -> Click to Login</a></p>
+      </body>
+    </html>
+  `);
 };
 
 const getCallback = async (req, res) => {
