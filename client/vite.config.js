@@ -4,11 +4,4 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    proxy: {
-      "/auth": "https://localhost:8000",
-      "/data": "https://localhost:8000",
-      "/roast": "https://localhost:8000",
-    },
-  },
 });

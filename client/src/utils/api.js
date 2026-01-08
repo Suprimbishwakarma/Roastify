@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// Use environment variable for API URL, fallback to localhost for development
+const API_URL = import.meta.env.VITE_API_URL;
+
 const API = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: API_URL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -35,7 +38,7 @@ API.interceptors.response.use(
 export const spotifyAPI = () => {
   return {
     login: () => {
-      window.location.href = "http://localhost:8000/auth/login";
+      window.location.href = `${API_URL}/auth/login`;
     },
     getUserData: () => API.get("/data/user"),
     getCurrentUser: () => API.get("/auth/me"),
