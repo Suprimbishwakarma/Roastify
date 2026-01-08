@@ -13,8 +13,12 @@ const loggedIn = async (req, res) => {
     "user-read-recently-played",
   ];
 
+  // DEBUG LOGGING
+  console.log("DEBUG: Configured Redirect URI:", spotifyAPI.getRedirectURI());
+  
   // creates an authorization page.
   const authURL = spotifyAPI.createAuthorizeURL(scope, null, true);
+  console.log("DEBUG: Generated Auth URL:", authURL);
 
   // redirects to the authorization page from spotify.
   res.redirect(authURL);
