@@ -13,6 +13,18 @@ const loggedIn = async (req, res) => {
     "user-read-recently-played",
   ];
 
+  // Runtime Validation
+  if (!process.env.SPOTIFY_REDIRECT_URI) {
+    return res.status(500).send("❌ Configuration Error: SPOTIFY_REDIRECT_URI is missing from Vercel Environment Variables.");
+  }
+  if (!process.env.SPOTIFY_CLIENT_ID) {
+    return res.status(500).send("❌ Configuration Error: SPOTIFY_CLIENT_ID is missing from Vercel Environment Variables.");
+  }
+
+  // Ensure URI is set (fixes potential initialization timing issues)
+  spotifyAPI.setRedirectURI(process.env.SPOTIFY_REDIRECT_URI);
+  spotifyAPI.setClientId(process.env.SPOTIFY_CLIENT_ID);
+  
   // DEBUG LOGGING
   console.log("DEBUG: Configured Redirect URI:", spotifyAPI.getRedirectURI());
   
